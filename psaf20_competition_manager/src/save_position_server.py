@@ -4,8 +4,19 @@ import rospy
 from psaf20_competition_manager.srv import SavePosition
 
 def handle_save_position(req):
+    """
+    @param args:
+    save: bool =
+    Odometry: nav_msgs/Odometry
+    """
+
     if req.save:
-        print('save position now')
+        print('save new position now')
+        print('=== Odomentry ===')
+        print(req.position)
+        print('')
+        print('=== GPS ===')
+        print(req.GPS)
         return True
     else:
         print('dont save position now')
@@ -19,3 +30,4 @@ def save_position_server():
 
 if __name__ == '__main__':
     save_position_server()
+    
