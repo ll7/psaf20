@@ -1,0 +1,6 @@
+# request
+bool save
+nav_msgs/Odometry position
+sensor_msgs/NavSatFix GPS
+---
+bool saved

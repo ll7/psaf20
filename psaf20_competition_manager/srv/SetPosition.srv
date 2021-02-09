@@ -1,0 +1,6 @@
+# request
+bool set_position
+geometry_msgs/Pose pose
+---
+# response
+bool position_set
