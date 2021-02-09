@@ -4,19 +4,32 @@ import rospy
 from psaf20_competition_manager.srv import SavePosition
 
 def handle_save_position(req):
-    """
-    @param args:
-    save: bool =
-    Odometry: nav_msgs/Odometry
-    """
-
+    
+    prefix = '/competition/current_pose'
     if req.save:
         print('save new position now')
-        print('=== Odomentry ===')
-        print(req.position)
-        print('')
-        print('=== GPS ===')
-        print(req.GPS)
+
+        # save position
+        rospy.set_param(
+            prefix + '/position/x', req.position.pose.pose.position.x)
+        rospy.set_param(
+            prefix + '/position/y', req.position.pose.pose.position.y)
+        rospy.set_param(
+            prefix + '/position/z', req.position.pose.pose.position.z)
+        
+        # save orientation
+        rospy.set_param(
+            prefix + '/orientation/x', req.position.pose.pose.orientation.x)
+        rospy.set_param(
+            prefix + '/orientation/y', req.position.pose.pose.orientation.y)
+        rospy.set_param(
+            prefix + '/orientation/z', req.position.pose.pose.orientation.z)
+        rospy.set_param(
+            prefix + '/orientation/w', req.position.pose.pose.orientation.w)
+        
+        print('saved ego_vehicle position to ' + prefix + 'in the parameters')
+        print('save to yaml with: ')
+        print('rosparam dump ~/carla-ros-bridge/psaf20/psaf20_competition_manager/config/TownXY/PositionXY.yaml '+ prefix)
         return True
     else:
         print('dont save position now')
