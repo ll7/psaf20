@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   nav_msgs
   sensor_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -60,6 +61,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
   FILES
   SavePosition.srv
+  SetPosition.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -76,6 +78,7 @@ generate_messages(
   std_msgs
   nav_msgs
   sensor_msgs
+  geometry_msgs
 )
 
 ################################################
