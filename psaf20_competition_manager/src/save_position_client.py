@@ -20,11 +20,11 @@ def save_position_client(odom):
 
 if __name__ == '__main__':
     print("Requesting save_position")
-    print(rospy.wait_for_message('/carla/ego_vehicle/odometry', Odometry, timeout=1))
+    rospy.init_node('listen_to_odom')
     try:
         odom = rospy.wait_for_message("carla/ego_vehicle/odometry", Odometry, timeout=1)
     except rospy.ROSException as e:
         odom = Odometry()
         print("wait_for_message failed: %s" %e)
-
+    print(odom)
     save_position_client(odom)
