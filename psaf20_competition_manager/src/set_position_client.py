@@ -14,6 +14,10 @@ def set_position_client():
         position.position.x = 120.0
         position.position.y = 194.0
         position.position.z = 0.0
+        position.orientation.x = 90.0
+        position.orientation.y = 0.0
+        position.orientation.z = 0.0
+        position.orientation.w = 1.0
         print(position)
         #position.orientation = [0.0, 0.0, 0.0, 1.0]
         position_set = set_position(set_position = True, pose = position)
