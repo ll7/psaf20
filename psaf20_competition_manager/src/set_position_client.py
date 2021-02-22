@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+"""
+if the set_position_server is running, i can set a postion
+
+TODO:
+- read from ros param and set position
+"""
+
 import rospy
 from geometry_msgs.msg import Pose
 
@@ -9,17 +16,23 @@ def set_position_client():
     rospy.wait_for_service('set_position')
     try:
         set_position = rospy.ServiceProxy('set_position', SetPosition)
-        # TODO: set a pose
+        
         position = Pose()
-        position.position.x = 120.0
-        position.position.y = 194.0
-        position.position.z = 0.0
-        position.orientation.x = 90.0
-        position.orientation.y = 0.0
-        position.orientation.z = 0.0
-        position.orientation.w = 1.0
+        
+        position.position.x = rospy.get_param('competition/start/position/x')
+        position.position.y = rospy.get_param('competition/start/position/y')
+        position.position.z = rospy.get_param('competition/start/position/z')
+        
+        position.orientation.x = rospy.get_param(
+            'competition/start/orientation/x')
+        position.orientation.y = rospy.get_param(
+            'competition/start/orientation/y')
+        position.orientation.z = rospy.get_param(
+            'competition/start/orientation/z')
+        position.orientation.w = rospy.get_param(
+            'competition/start/orientation/w')
         print(position)
-        #position.orientation = [0.0, 0.0, 0.0, 1.0]
+        
         position_set = set_position(set_position = True, pose = position)
         return position_set
     except rospy.ServiceException as e:
