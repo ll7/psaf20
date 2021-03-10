@@ -14,3 +14,5 @@ competition:
       x: 135.0
       y: 194.42
       z: 0.0
+  traffic_rules: true
+  ready_for_ego: false
