@@ -56,6 +56,7 @@ def callback(data):
 def competition_manager():
     rospy.init_node('competion_manager')
     rospy.Subscriber("carla/ego_vehicle/odometry", Odometry, callback)
+    rospy.set_param('competition/ready_for_ego', True)
     rospy.spin()
     
 if __name__ == '__main__':
