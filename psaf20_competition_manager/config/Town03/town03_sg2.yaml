@@ -19,5 +19,5 @@ competition:
       y: 0.00010331853097544822
       z: -0.7152585677487273
       w: 0.6988598977415559
-    traffic_rules: true
+  traffic_rules: true
   ready_for_ego: false
